@@ -1,0 +1,1 @@
+ADD_EXECUTABLE(SmartPointer main.cpp Store.cpp)
