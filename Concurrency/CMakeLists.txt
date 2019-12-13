@@ -1,0 +1,2 @@
+ADD_EXECUTABLE(Concurrency main.cpp)
+TARGET_LINK_LIBRARIES(Concurrency pthread)
