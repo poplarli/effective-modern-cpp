@@ -51,6 +51,9 @@ int main(){
 	//lockAndCall(f1, m1, 0);	//编译不过，could not convert ‘ptr’ from ‘int’ to ‘std::shared_ptr<Widget>’
 	lockAndCall(f1, m1, nullptr);
 
+	using pptr = int (*) (std::shared_ptr<Widget> spw);
+	pptr(0);
+
 	f1(0);	//这里可以调用。
 	std::shared_ptr<int> sp = 0; //这里可以调用。
 
@@ -142,6 +145,11 @@ int main(){
 
 	MMMM mm1;
 	MMMM mm2(std::move(mm1));
+
+	R r1("test");
+	//R r2 = r1; 编译不过，因为定义了移动构造函数。除非显示定义复制操作。
+	//r1 = std::move(R("yddd")); 编译不过，因为定义了移动构造函数。除非显示定义移动赋值。
+
 	return 0;
 }
 

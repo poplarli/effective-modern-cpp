@@ -45,6 +45,10 @@ int main(){
 	const int * pi = nullptr;
 	func3(pi);
 
+	std::vector<bool> bvec = {true, false, false};
+	using boost::typeindex::type_id_with_cvr;
+	std::cout << type_id_with_cvr<decltype(bvec[1])>().pretty_name() << std::endl;
+
  	return 0;
 }
 

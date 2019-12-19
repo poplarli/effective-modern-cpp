@@ -233,7 +233,7 @@ public:
 	}
 
 private:
-	mutable std::atomic<int> cnt {0};	//对于当个变量的内存操作，可以使用atomic变量，比互斥量提供更好的性能
+	mutable std::atomic<int> cnt {0};	//对于单个变量的内存操作，可以使用atomic变量，比互斥量提供更好的性能
 
 	mutable std::mutex mx;				//声明为mutable 因为加锁解锁都不是const函数所为
 	mutable bool flag {false};
@@ -271,6 +271,15 @@ public:
 	MMMM(MMMM&& rhs) = default;
 private:
 	MapTool mt;
+};
+
+class R{
+
+public:
+	R(std::string s = "") : s(s){}
+	R(R&&) = default;
+
+	std::string s;
 };
 
 

@@ -66,8 +66,9 @@ public:
 
 	//使用shared_from_this，必须要有指向this的控制块。
 	//所以一般把构造函数定义为private，使用factory函数生成对象。
-	static std::shared_ptr<Person> makePerson(std::string name){
-		return std::shared_ptr<Person>(new Person(name));
+	template<typename... Ts>
+	static std::shared_ptr<Person> makePerson(Ts&& ... params){
+		return std::shared_ptr<Person>(new Person(std::forward(params)...));
 	}
 
 	~Person(){
